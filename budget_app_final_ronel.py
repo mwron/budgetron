@@ -134,7 +134,7 @@ if category != placeholder:
         creds = Credentials.from_service_account_info(st.secrets["gcp_service_account"], scopes=scope)
         client = gspread.authorize(creds)
         sheet = client.open_by_url(st.secrets["SHEET_URL"])
-        worksheet = sheet.sheet1
+        worksheet = sheet.worksheet("Form Responses")
         worksheet.append_row(data, value_input_option='USER_ENTERED')
 
     def submit_and_reset():
